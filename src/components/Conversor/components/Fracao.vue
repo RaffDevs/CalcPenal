@@ -6,7 +6,7 @@
             </q-card-section>
 
             <q-card-actions class="text-h5" vertical align="center">
-                120
+                {{textDias}}
             </q-card-actions>
         </q-card>
     </div>
@@ -14,6 +14,14 @@
 
 <script>
 export default {
-    
+    data() {
+        return {
+            dias: this.textDias,
+
+        }
+    },
+    methods:{
+
+    }
 }
 </script>
