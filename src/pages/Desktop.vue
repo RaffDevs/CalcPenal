@@ -8,7 +8,7 @@
               CONVERSOR
             </q-item-label>
         </q-item-section>
-        <q-card-section class="row" >
+        <q-card-section class="row items-baseline" >
             <DiasAnos/>
             <FracaoPorcent/>
         </q-card-section>
