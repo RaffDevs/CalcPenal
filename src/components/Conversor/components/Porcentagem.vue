@@ -1,8 +1,8 @@
 <template>
-    <div class="col-md-4 col-sm-12 text-center">
+    <div class="col-md-3 col-sm-12 text-center">
         <q-knob
         readonly
-        v-model="value"
+        v-model="porcentagem"
         show-value
         size="90px"
         :thickness="0.22"
@@ -10,26 +10,52 @@
         track-color="grey-3"
         class="text-dark q-ma-md"
     >
-        50%    
+        {{ porcentagem }}%
     </q-knob>
         <div class="text-bold text-h5">
-            365
+            {{ result }}
         </div>
     </div>
 </template>
 
 <script>
 export default {
+
+    props : {
+
+        porcentagem : Number,
+
+        valor : String
+
+    },
+
+    created() {
+
+        console.log('CRIOU PORCENTAGEM')
+
+        this.result = (Number(this.valor) * this.porcentagem) / 100;
+
+    },
     
     data() {
 
         return {
 
-            value : 50
+            result : 0
 
         }
 
     },
+
+    watch : {
+
+        valor : function() {
+
+            this.result = (Number(this.valor) * this.porcentagem) / 100;
+
+        }
+
+    }
 
 }
 </script>

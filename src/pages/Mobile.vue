@@ -53,9 +53,8 @@
           <div class="absolute-bottom bg-transparent">
             <h5>CalcPenal</h5>
             <div class="text-weight-bold">Redes Sociais</div>
-            <q-icon name="fab fa-instagram" color="white" size="20px"/>
-            <q-icon name="fab fa-facebook-f" color="white" size="20px"/>
-            <q-icon name="fab fa-whatsapp" color="white" size="20px"/>
+            
+            
           </div>
         </q-img>
       </q-drawer>

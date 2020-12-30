@@ -1,6 +1,12 @@
 <template>
     <q-card-section class="col-md-4 col-sm-12">
 
+        <div class="text-h5 q-mt-sm q-mb-md">ANOS E DIAS</div>
+
+        <q-banner  dense rounded class="bg-dark text-white text-bold q-mb-md">
+        Converta anos, meses e dias para dias.
+        </q-banner>
+
         <q-select class="q-mb-lg" v-model="selectedOption" color="dark" :options="options" label="Converter de:" />
 
         <div v-if="selectedOption === 'Anos para dias'">
@@ -34,7 +40,7 @@
        
         <q-btn-group push spread>
             <q-btn flat size="100" v-on:click='calculaData' label="Calcular" class="bg-dark" color="white" />
-            <q-btn flat :label="resultado" color="dark"/>
+            <q-btn @click="clipBoard" flat :label="resultado" color="dark"/>
         </q-btn-group>
         
     </q-card-section>
@@ -42,6 +48,9 @@
 
 
 <script>
+
+import { copyToClipboard } from 'quasar';
+
 export default {
 
     data() {
@@ -69,31 +78,46 @@ export default {
 
     },
     methods:{
-            //Calculo da Data
-            calculaData(){
-                this.resultado = "" 
-                //Este if é baseado no que vem selecionado no dropdown
-                if(this.selectedOption == 'Anos para dias'){
-                    let anos = 365 * this.textAnos
-                    let meses = 30 * this.textMeses
-                    let dias = parseInt(this.textDias)
-                    this.resultado = (anos + meses + dias)
-                }else{
-                    this.resultado = this.getFormatedStringFromDays(parseInt(this.textDiasAnos))
-                }
-            },
-
-            //Funcao que serve para transformar dias em uma data composta DD/MM/AA
-            getFormatedStringFromDays(numberOfDays) {
-                let years = Math.floor(numberOfDays / 365)
-                let months = Math.floor(numberOfDays % 365 / 30)
-                let days = Math.floor(numberOfDays % 365 % 30)
-                //Formatação em String
-                let yearsDisplay = years > 0 ? years + (years == 1 ? " Ano, " : " Anos, ") : ""
-                let monthsDisplay = months > 0 ? months + (months == 1 ? " Mes, " : " Meses, ") : ""
-                let daysDisplay = days > 0 ? days + (days == 1 ? " Dia" : " Dias") : ""
-                return yearsDisplay + monthsDisplay + daysDisplay
+        //Calculo da Data
+        calculaData(){
+            
+            this.resultado = "" 
+            //Este if é baseado no que vem selecionado no dropdown
+            if(this.selectedOption == 'Anos para dias'){
+                let anos = 365 * this.textAnos
+                let meses = 31 * this.textMeses
+                let dias = parseInt(this.textDias)
+                this.resultado = (anos + meses + dias)
+            }else{
+                this.resultado = this.getFormatedStringFromDays(parseInt(this.textDiasAnos))
             }
+        },
+
+        //Funcao que serve para transformar dias em uma data composta DD/MM/AA
+        getFormatedStringFromDays(numberOfDays) {
+
+            let years = Math.floor(numberOfDays / 365);
+
+            let months = Math.floor(numberOfDays % 365 / 31);
+
+            let days = Math.floor(numberOfDays % 365 % 31);
+
+            //Formatação em String
+            let yearsDisplay = years > 0 ? years + (years == 1 ? " Ano, " : " Anos, ") : ""
+            let monthsDisplay = months > 0 ? months + (months == 1 ? " Mes, " : " Meses, ") : ""
+            let daysDisplay = days > 0 ? days + (days == 1 ? " Dia" : " Dias") : ""
+            return yearsDisplay + monthsDisplay + daysDisplay
+        },
+
+        clipBoard : function() {
+
+            copyToClipboard(this.resultado).then(() => {
+
+                this.$root.$emit('openClipboardModal');
+
+            })
+
+        }
     }
     
 }
