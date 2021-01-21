@@ -147,9 +147,9 @@ export default {
 
         percent() {
 
-            if (this.current != "") {
+            if (this.answer != "") {
 
-                this.current = `${parseFloat(this.current) / 100}`;
+                this.answer = `${parseFloat(this.answer) / 100}`;
 
             }
         },
