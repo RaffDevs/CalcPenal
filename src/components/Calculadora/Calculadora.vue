@@ -2,7 +2,7 @@
     <q-card style="width: 350px" bordered>
         <q-card-section class="row items-center">
             <q-card-section class="col-12">
-                <q-input class="text-right" outlined disable v-model="answer"  :label="logList + current "/>
+                <q-input class="text-right" outlined disable v-model="answer" />
             </q-card-section>
             <q-card-section class="col-12 row justify-center" >
                 <div class="row col-12 q-mt-sm justify-center  no-wrap" >
@@ -96,6 +96,8 @@ export default {
 
             answer: "",
 
+            reset : false,
+
             operatorClicked: true
         };
     },
@@ -111,14 +113,18 @@ export default {
                 this.operatorClicked = false;
             }
 
-            this.current = `${this.current}${number}`;
+            this.current += `${number}`;
+
+            this.answer += `${number}`;
         },
 
         addtoLog(operator) {
 
             if (this.operatorClicked == false) {
 
-                this.logList += `${this.current} ${operator} `;
+                // this.logList += `${this.answer} ${operator} `;
+
+                this.answer += `${operator}`;
 
                 this.current = "";
 
@@ -137,14 +143,6 @@ export default {
 
             this.operatorClicked = false;
 
-        },
-
-        sign() {
-
-            if (this.current != "") {
-                
-                this.current = this.current.charAt(0) === "-" ? this.current.slice(1) : `-${this.current}`;
-            }
         },
 
         percent() {
@@ -192,11 +190,15 @@ export default {
 
             if (this.operatorClicked == false) {
 
-                this.answer = eval(this.logList + this.current);
+                    this.answer = eval(this.answer);
 
-            } else {
+                    this.reset = true;
+
+            }
+
+            else {
                 
-                this.answer = "WHAT?!!";
+                this.answer = "???";
             }
         }
 }

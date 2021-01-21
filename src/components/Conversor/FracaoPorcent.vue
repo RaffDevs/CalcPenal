@@ -1,5 +1,5 @@
 <template>
-    <q-card-section class="col-md-8 q-pa-none">
+    <q-card-section class="col-md-8 q-pa-none" >
         <div class="text-h5  q-mt-sm q-mb-md">FRAÇÃO E PORCENTAGEM</div>
         <q-banner  dense rounded class="bg-dark text-white text-bold q-mb-md">
         Converta os dias em frações e porcentagens.
@@ -39,7 +39,7 @@
                             control-color="dark"
                             padding
                             arrows
-                            height="300px"
+                            height="350px"
                             class="col-12 rounded-borders desktop-only"
                             @transition="calcula"
                         >

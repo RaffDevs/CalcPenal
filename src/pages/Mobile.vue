@@ -9,54 +9,50 @@
         bordered
         content-class="bg-grey-3"
       >
-        <q-scroll-area class="fit" style="height: calc(100% - 150px); margin-top: 150px;">
-          <q-list padding>
-                <q-expansion-item
-                  expand-separator
-                  icon="change_circle"
-                  label="Conversor"
-                >
-                <template v-for="(menuItem, index) in menuList">
-                    <q-item  v-if="menuItem.type === 'conversor'" :key="index" @click="setActive(menuItem.label)" :active="menuItem.label === activeItem" clickable v-ripple>
-                        <q-item-section avatar>
-                        <q-icon class="" :name="menuItem.icon" />
-                        </q-item-section>
-                        <q-item-section class="">
-                        {{ menuItem.label }}
-                        </q-item-section>
-                    </q-item>
-                    
-                  </template>
-                </q-expansion-item>
-
-                <q-expansion-item
-                  expand-separator
-                  icon="calculate"
-                  label="Calculos"
-                >
-                <template v-for="(menuItem, index) in menuList">
-                    <q-item v-if="menuItem.type === 'calculos'" :key="index" @click="setActive(menuItem.label)" :active="menuItem.label === activeItem" clickable v-ripple>
-                        <q-item-section avatar>
-                        <q-icon class="" :name="menuItem.icon" />
-                        </q-item-section>
-                        <q-item-section class="">
-                        {{ menuItem.label }}
-                        </q-item-section>
-                    </q-item>
-                    
-                  </template>
-                </q-expansion-item>
-                  
-          </q-list>
-        </q-scroll-area>
-        <q-img class="absolute-top bg-dark"  style="height: 150px">
+        <q-img class="absolute-top bg-dark"  style="height: 180px">
           <div class="absolute-bottom bg-transparent">
-            <h5>CalcPenal</h5>
-            <div class="text-weight-bold">Redes Sociais</div>
-            
-            
+            <h5 class="text-h5">Calculadora Execução Penal</h5>    
           </div>
         </q-img>
+        <q-list padding style="margin-top: 180px;">
+          <q-expansion-item
+            expand-separator
+            icon="change_circle"
+            label="Conversor"
+          >
+            <template v-for="(menuItem, index) in menuList">
+                <q-item  v-if="menuItem.type === 'conversor'" :key="index" @click="setActive(menuItem.label)" :active="menuItem.label === activeItem" clickable v-ripple>
+                    <q-item-section avatar>
+                    <q-icon class="" :name="menuItem.icon" />
+                    </q-item-section>
+                    <q-item-section class="">
+                    {{ menuItem.label }}
+                    </q-item-section>
+                </q-item>
+            </template>
+          </q-expansion-item>
+
+          <q-expansion-item
+            expand-separator
+            icon="calculate"
+            label="Calculos"
+          >
+          <template v-for="(menuItem, index) in menuList">
+              <q-item v-if="menuItem.type === 'calculos'" :key="index" @click="setActive(menuItem.label)" :active="menuItem.label === activeItem" clickable v-ripple>
+                  <q-item-section avatar>
+                  <q-icon class="" :name="menuItem.icon" />
+                  </q-item-section>
+                  <q-item-section class="">
+                  {{ menuItem.label }}
+                  </q-item-section>
+              </q-item>
+              
+            </template>
+          </q-expansion-item>
+                
+        </q-list>
+      
+        
       </q-drawer>
 
       <q-page-container>

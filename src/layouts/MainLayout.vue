@@ -6,13 +6,8 @@
       <q-toolbar class="bg-dark">
         <q-btn flat @click="drawerSetter" round dense icon="menu" class="mobile-only"/>
         <q-toolbar-title >
-          CRIMINALISTA EM FOCO | <small>Calculadora Penal</small>
-        </q-toolbar-title>
-        <div v-if="$q.platform.is.desktop">
-          <q-icon name="fab fa-instagram" color="white" size="20px"/>
-          <q-icon name="fab fa-facebook-f" color="white" size="20px"/>
-          <q-icon name="fab fa-whatsapp" color="white" size="20px"/>
-        </div>
+          CRIMINALISTA EM FOCO | <small>Calculadora de Execução Penal</small>
+        </q-toolbar-title>  
       </q-toolbar>
     </q-header>
     <q-page-container>

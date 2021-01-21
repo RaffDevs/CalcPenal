@@ -6,7 +6,7 @@
             </q-card-section>
 
             <q-card-actions class="text-h5" vertical align="center">
-                {{result}}
+                {{result}} <small>dias</small>
             </q-card-actions>
         </q-card>
     </div>

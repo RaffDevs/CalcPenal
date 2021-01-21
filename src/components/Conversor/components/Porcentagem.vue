@@ -13,7 +13,7 @@
         {{ porcentagem }}%
     </q-knob>
         <div class="text-bold text-h5">
-            {{ result }}
+            {{ result }} <small>dias</small>
         </div>
     </div>
 </template>
@@ -33,7 +33,7 @@ export default {
 
         console.log('CRIOU PORCENTAGEM')
 
-        this.result = (Number(this.valor) * this.porcentagem) / 100;
+        this.result = Math.round(Number(this.valor) * this.porcentagem) / 100;
 
     },
     
@@ -51,7 +51,7 @@ export default {
 
         valor : function() {
 
-            this.result = (Number(this.valor) * this.porcentagem) / 100;
+            this.result = Math.round(Number(this.valor) * this.porcentagem) / 100;
 
         }
 
