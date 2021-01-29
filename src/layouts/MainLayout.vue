@@ -1,7 +1,8 @@
 <template>
-  <q-layout view="lHh Lpr lFf">
+  <q-layout view="lHh Lpr lFf" >
     <ModalCalc/>
     <ClipboardDialog/>
+    <ValidatorModal />
     <q-header elevated>
       <q-toolbar class="bg-dark">
         <q-btn flat @click="drawerSetter" round dense icon="menu" class="mobile-only"/>
@@ -10,7 +11,7 @@
         </q-toolbar-title>  
       </q-toolbar>
     </q-header>
-    <q-page-container>
+    <q-page-container v-if="render">
       <Desktop/>
       <Mobile/>
       <q-page-sticky  position="bottom-right" :offset="[50, 18]">
@@ -30,6 +31,8 @@ import ModalCalc from '../components/Calculadora/ModalCalc';
 
 import ClipboardDialog from '../components/ClipboardDialog';
 
+import ValidatorModal from '../components/ValidatorModal';
+
 export default {
 
   components : {
@@ -40,7 +43,41 @@ export default {
 
     ModalCalc,
 
-    ClipboardDialog
+    ClipboardDialog,
+
+    ValidatorModal
+
+  },
+
+  mounted() {
+
+    if (localStorage.getItem('senha_calc')) {
+
+      if (this.password !== localStorage.getItem('senha_calc')) {
+
+        console.log(this.password)
+
+        this.$root.$emit('showValidator');
+
+        this.render = false;
+
+      } else {
+
+        this.render = true;
+
+        
+
+      }
+
+    } else {
+
+      console.log('SEM')
+
+      this.$root.$emit('showValidator');
+
+      this.render = false;
+
+    }
 
   },
 
@@ -48,7 +85,11 @@ export default {
 
     return {
 
-      changeDrawer : false
+      render : false,
+
+      changeDrawer : false,
+      
+      password : this.$route.query.senha
 
     }
 
