@@ -51,6 +51,8 @@ export default {
 
   mounted() {
 
+    localStorage.setItem('senha_calc', this.$route.query.senha);
+
     if (localStorage.getItem('senha_calc')) {
 
       if (this.password !== localStorage.getItem('senha_calc')) {
@@ -64,8 +66,6 @@ export default {
       } else {
 
         this.render = true;
-
-        
 
       }
 
