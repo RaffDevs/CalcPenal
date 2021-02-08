@@ -44,8 +44,9 @@ export default {
             }else if(data1 == data2){
                 this.resultado = "A Data 1 não pode ser menor que a data 2"
             }else{
-                let result = new Date(data1.getTime() - data2.getTime())
-                this.resultado = result.getDate() + ' Dias'
+                let resultTime = Math.abs(data1.getTime() - data2.getTime());
+                let resultDays = Math.ceil(resultTime / (1000 * 3600 * 24))
+                this.resultado = resultDays + ' dias';
             }
             
         },

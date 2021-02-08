@@ -11,7 +11,7 @@
         </q-toolbar-title>  
       </q-toolbar>
     </q-header>
-    <q-page-container v-if="render">
+    <q-page-container >
       <Desktop/>
       <Mobile/>
       <q-page-sticky  position="bottom-right" :offset="[50, 18]">
@@ -49,37 +49,37 @@ export default {
 
   },
 
-  mounted() {
+  // mounted() {
 
-    localStorage.setItem('senha_calc', this.$route.query.senha);
+  //   console.log('ATUALIZADO!');
 
-    if (localStorage.getItem('senha_calc')) {
+  //   if (localStorage.getItem('senha_calc')) {
 
-      if (this.password !== localStorage.getItem('senha_calc')) {
+  //     if (this.password !== localStorage.getItem('senha_calc')) {
 
-        console.log(this.password)
+  //       console.log(this.password)
 
-        this.$root.$emit('showValidator');
+  //       this.$root.$emit('showValidator');
 
-        this.render = false;
+  //       this.render = false;
 
-      } else {
+  //     } else {
 
-        this.render = true;
+  //       this.render = true;
 
-      }
+  //     }
 
-    } else {
+  //   } else {
 
-      console.log('SEM')
+  //     console.log('SEM');
 
-      this.$root.$emit('showValidator');
+  //     this.$root.$emit('showValidator');
 
-      this.render = false;
+  //     this.render = false;
 
-    }
+  //   }
 
-  },
+  // },
 
   data() {
 
