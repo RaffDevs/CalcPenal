@@ -7,7 +7,7 @@
       <q-toolbar class="bg-dark">
         <q-btn flat @click="drawerSetter" round dense icon="menu" class="mobile-only"/>
         <q-toolbar-title >
-          CRIMINALISTA EM FOCO | <small>Calculadora de Execução Penal</small>
+          FERNANDA CRUZ | <small>Calculadora de Execução Penal</small>
         </q-toolbar-title>  
       </q-toolbar>
     </q-header>
